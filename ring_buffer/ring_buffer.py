@@ -5,7 +5,14 @@ class RingBuffer:
     self.storage = [None]*capacity
 
   def append(self, item):
-    pass
+    self.storage[self.current] = item
+
+    self.current += 1
+
+    if self.current == self.capacity:
+       self.current = 0
+    
+    return self.storage
 
   def get(self):
-    pass
+    return [s for s in self.storage if s is not None]
